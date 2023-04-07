@@ -10,6 +10,6 @@ export const IconWrapper = styled.svg`
 
 export const Icon = props => (
   <IconWrapper {...props}>
-    <use xlinkHref={`/img/sprite.svg#${props.name}`} />
+    <use xlinkHref={`img/sprite.svg#${props.name}`} />
   </IconWrapper>
 )
