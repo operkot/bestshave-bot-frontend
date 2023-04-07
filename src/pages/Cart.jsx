@@ -13,8 +13,6 @@ export const Cart = () => {
   const { items, amount, total, removeItem, adjustItemQty } = useCart()
   const { tg, queryId } = useTelegram()
 
-  console.log(process.env.REACT_APP_BACKEND_URL)
-
   const onDataSend = useCallback(() => {
     const data = {
       items,
@@ -22,7 +20,7 @@ export const Cart = () => {
       queryId,
     }
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/webdata`, {
+    fetch(`http://45.140.179.158/webdata`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
