@@ -1,7 +1,9 @@
+import { useCallback, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { PATHS } from 'routing/paths'
 import { useCart } from 'hooks/useCart'
+import { useTelegram } from 'hooks/useTelegram'
 import { Box, Button, Container, Flex, Panel, Text } from 'ui/atoms'
 import { CartItem } from 'ui/molecules'
 import { LayoutBase } from 'ui/layout/LayoutBase'
@@ -9,6 +11,40 @@ import { formatProductPrice } from 'utils/currency'
 
 export const Cart = () => {
   const { items, amount, total, removeItem, adjustItemQty } = useCart()
+  const { tg, queryId } = useTelegram()
+
+  const onDataSend = useCallback(() => {
+    const data = {
+      items,
+      total: formatProductPrice(total),
+      queryId,
+    }
+
+    fetch('http://localhost:8080/webdata', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+  }, [])
+
+  useEffect(() => {
+    tg.onEvent('mainButtonClicked', onDataSend)
+
+    return () => {
+      tg.offEvent('mainButtonClicked', onDataSend)
+    }
+  }, [onDataSend])
+
+  useEffect(() => {
+    if (amount === 0) {
+      tg.MainButton.hide()
+    } else {
+      tg.MainButton.show()
+      tg.MainButton.setParams({ text: `Оформить ${formatProductPrice(total)}` })
+    }
+  }, [amount])
 
   if (amount === 0) {
     return (
