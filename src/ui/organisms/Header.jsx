@@ -1,11 +1,10 @@
-import { useNavigate, matchPath } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { useNavigationBtn } from 'hooks/useNavigationBtn'
 import { Box, Container, Flex, Icon } from 'ui/atoms'
 import { CartIndicator } from 'ui/molecules'
 
 export const Header = () => {
-  const navigate = useNavigate()
   const { onNavBtnClick } = useNavigationBtn()
 
   return (
