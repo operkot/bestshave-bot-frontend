@@ -13,6 +13,8 @@ export const Cart = () => {
   const { items, amount, total, removeItem, adjustItemQty } = useCart()
   const { tg, queryId } = useTelegram()
 
+  console.log(process.env.REACT_APP_BACKEND_URL)
+
   const onDataSend = useCallback(() => {
     const data = {
       items,
