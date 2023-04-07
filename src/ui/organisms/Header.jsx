@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom'
-
 import { useNavigationBtn } from 'hooks/useNavigationBtn'
 import { Box, Container, Flex, Icon } from 'ui/atoms'
 import { CartIndicator } from 'ui/molecules'
