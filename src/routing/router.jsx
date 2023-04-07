@@ -1,9 +1,9 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, createHashRouter } from 'react-router-dom'
 
 import { PATHS } from './paths'
 import { Cart, Catalog, Product } from 'pages'
 
-export default createBrowserRouter([
+export default createHashRouter([
   {
     path: PATHS.HOME,
     element: <Catalog />,
