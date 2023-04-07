@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/bestshave-bot-frontend/static/css/main.9a2028ea.css",
-    "main.js": "/bestshave-bot-frontend/static/js/main.384431d8.js",
+    "main.js": "/bestshave-bot-frontend/static/js/main.30054a1a.js",
     "index.html": "/bestshave-bot-frontend/index.html",
     "main.9a2028ea.css.map": "/bestshave-bot-frontend/static/css/main.9a2028ea.css.map",
-    "main.384431d8.js.map": "/bestshave-bot-frontend/static/js/main.384431d8.js.map"
+    "main.30054a1a.js.map": "/bestshave-bot-frontend/static/js/main.30054a1a.js.map"
   },
   "entrypoints": [
     "static/css/main.9a2028ea.css",
-    "static/js/main.384431d8.js"
+    "static/js/main.30054a1a.js"
   ]
 }
