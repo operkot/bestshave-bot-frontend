@@ -20,7 +20,7 @@ export const Cart = () => {
       queryId,
     }
 
-    fetch('http://localhost:8080/webdata', {
+    fetch(`process.env.REACT_APP_BACKEND_URL/webdata`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
