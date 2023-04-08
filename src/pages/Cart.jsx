@@ -20,7 +20,7 @@ export const Cart = () => {
     }
 
     tg.sendData(JSON.stringify(data))
-  }, [])
+  }, [items])
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onDataSend)
