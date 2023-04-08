@@ -11,22 +11,15 @@ import { formatProductPrice } from 'utils/currency'
 
 export const Cart = () => {
   const { items, amount, total, removeItem, adjustItemQty } = useCart()
-  const { tg, queryId } = useTelegram()
+  const { tg } = useTelegram()
 
   const onDataSend = useCallback(() => {
     const data = {
       items,
       total: formatProductPrice(total),
-      queryId,
     }
 
-    fetch(`http://45.140.179.158/webdata`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
+    tg.sendData(JSON.stringify(data))
   }, [])
 
   useEffect(() => {
@@ -43,6 +36,10 @@ export const Cart = () => {
     } else {
       tg.MainButton.show()
       tg.MainButton.setParams({ text: `Оформить ${formatProductPrice(total)}` })
+    }
+
+    return () => {
+      tg.MainButton.hide()
     }
   }, [amount])
 
@@ -63,7 +60,7 @@ export const Cart = () => {
           </Text>
 
           <Text mb="1.25rem" textAlign="center">
-            Перйдите в каталог и выбирите себе что-нибудь :)
+            Загляните в каталог и выбирите себе что-нибудь :)
           </Text>
 
           <Link to={PATHS.HOME}>

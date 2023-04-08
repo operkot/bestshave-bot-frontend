@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { formatProductPrice } from 'utils/currency'
 import { useCart } from 'hooks/useCart'
@@ -27,10 +29,13 @@ export const Product = () => {
       thumb: state?.product?.images[0],
       quantity: Number(quantity),
     }
+    toast(`Товар "${state?.product?.title}" добавлен в корзину`, {
+      type: 'info',
+    })
 
     try {
       await addItem(data)
-      onModalSuccessOpen()
+      // onModalSuccessOpen()
     } catch (error) {
       console.log(error)
     }
@@ -130,6 +135,8 @@ export const Product = () => {
         isOpen={isModalSuccessOpen}
         onClose={onModalSuccessClose}
       />
+
+      <ToastContainer />
     </LayoutBase>
   )
 }
