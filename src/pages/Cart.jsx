@@ -13,14 +13,23 @@ export const Cart = () => {
   const { items, amount, total, removeItem, adjustItemQty } = useCart()
   const { tg } = useTelegram()
 
-  const onDataSend = useCallback(() => {
+  // const onDataSend = useCallback(() => {
+  //   const data = {
+  //     items,
+  //     total: formatProductPrice(total),
+  //   }
+
+  //   tg.sendData(JSON.stringify(data))
+  // }, [items, total])
+
+  const onDataSend = () => {
     const data = {
       items,
       total: formatProductPrice(total),
     }
 
     tg.sendData(JSON.stringify(data))
-  }, [items])
+  }
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onDataSend)
